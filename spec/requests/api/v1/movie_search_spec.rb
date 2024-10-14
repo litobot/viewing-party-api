@@ -1,8 +1,8 @@
 require 'rails_helper'
 
-RSpec.describe "Top Rated", type: :request do
-  describe "top rated endpoint" do
-    it "returns a list of top rated movies from the external API" do
+RSpec.describe "Movie Search", type: :request do
+  describe "movie search endpoint" do
+    it "returns a list of movies matching the seach query from the external API" do
 
       json_response = File.read('spec/fixtures/top_rated_movies.json')
 

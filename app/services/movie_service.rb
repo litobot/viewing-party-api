@@ -5,27 +5,22 @@ class MovieService
     end
 
     response = conn.get("/3/movie/top_rated")
-
-    json = JSON.parse(response.body, symbolize_names: true)
+    parse_json(response)
   end
 
-  # This is a translator that speaks to the ext API from within my API
+  def self.search_query(query)
+    conn = Faraday.new(url: "https://api.themoviedb.org") do |faraday|
+    end
 
-  
+    response = conn.get("/3/search/movie", { query: query })
+    parse_json(response)
+  end
 
-  # def self.call_db(endpoint, params = {})
-  #   response = connection.get(endpoint) do |req|
-  #     req.params = params
-  #     req.params[:api_key] = Rails.application.credentials[:movies_key]
-  #   end
-  #   parse_data(response)
-  # end
+  private
 
-  # def self.connection
-  #   Faraday.new("https://api.themoviedb.org")
-  # end
+  def self.parse_json
+    JSON.parse(response.body, symbolize_names: true)
+  end
 
-  # def self.parse_data(data)
-  #   JSON.parse(data.body, symbolize_names: true)
-  # end
+  # MovieService is a translator that speaks to the external API from within my API
 end
