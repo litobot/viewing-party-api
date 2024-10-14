@@ -11,6 +11,13 @@ Rails.application.routes.draw do
     namespace :v1 do
       resources :users, only: [:create, :index]
       resources :sessions, only: :create
+      resources :movies, only: [:index]
     end
   end
 end
+
+# I want a route to return all the Top Rated Movies
+# This will be a GET request
+# This is the URL for TMDB's Top Rated Movies
+  # https://api.themoviedb.org/3/movie/top_rated
+# 

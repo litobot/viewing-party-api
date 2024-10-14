@@ -8,7 +8,7 @@ describe MovieService do
       # We grab the first movie ("Shashank Redemption")
       movie_data = query[:results].first
       
-      require "pry"; binding.pry
+      # require "pry"; binding.pry
       expect(query).to be_a Hash
       expect(movie_data).to be_a Hash
       expect(movie_data).to have_key :title
